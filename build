@@ -1,0 +1,23 @@
+#!/bin/bash
+
+FILENAME=$1
+if [[ -z  $FILENAME ]];then
+  echo "must has one param"
+  exit 1
+fi
+
+OUTPUT=${FILENAME%.*}
+if [[ -e $OUTPUT ]]; then
+  echo "====== remove execute file ====="
+  echo ""
+  rm $OUTPUT
+fi
+
+clang++ -std=c++11 $FILENAME -o $OUTPUT
+echo "======build finish ======="
+echo ""
+
+echo "======start execute ======"
+echo ""
+
+./$OUTPUT
